@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:using_provider/atom/base.dart';
 import 'package:using_provider/atom/button.dart';
-import 'package:using_provider/page/first_page_controller.dart';
+import 'package:using_provider/page/first_page/first_page_controller.dart';
 
 class FirstPage extends StatelessWidget {
   @override
