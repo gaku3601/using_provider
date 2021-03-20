@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FirstPageController extends ChangeNotifier {
+class FirstPageController with ChangeNotifier {
   int count = 0;
   int count2 = 0;
 
