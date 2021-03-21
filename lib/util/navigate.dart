@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Navigate {
-  final GlobalKey<NavigatorState> key = new GlobalKey<NavigatorState>();
+  static GlobalKey<NavigatorState> key = new GlobalKey<NavigatorState>();
 
-  void push<T extends Widget, N>({@required T page, N args}) {
+  static void push<T extends Widget, N>({@required T page, N args}) {
     key.currentState.push<dynamic>(
       MaterialPageRoute(
         builder: (_) => page,
@@ -12,7 +12,7 @@ class Navigate {
     );
   }
 
-  void pushReplacement<T extends Widget, N>({@required T page, N args}) {
+  static void pushReplacement<T extends Widget, N>({@required T page, N args}) {
     key.currentState.pushReplacement(
       MaterialPageRoute(
         builder: (_) => page,
@@ -22,7 +22,7 @@ class Navigate {
   }
 
   /// 全ての履歴を削除し、新たなページへ遷移する
-  void pushAndAllClear<T extends Widget, N>({@required T page, N args}) {
+  static void pushAndAllClear<T extends Widget, N>({@required T page, N args}) {
     key.currentState.pushAndRemoveUntil(
       MaterialPageRoute(
         builder: (_) => page,
@@ -32,7 +32,7 @@ class Navigate {
     );
   }
 
-  void pop() {
+  static void pop() {
     key.currentState.pop();
   }
 }

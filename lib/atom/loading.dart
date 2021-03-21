@@ -9,12 +9,16 @@ class LoadingController with ChangeNotifier {
     notifyListeners();
   }
 
-  void startLoading() {
+  Future<T> loading<T>(Future<T> Function() process) async {
     this.__isLoading = true;
-  }
-
-  void endLoading() {
-    this.__isLoading = false;
+    try {
+      final response = await process();
+      return response;
+    } catch (e) {
+      throw e;
+    } finally {
+      this.__isLoading = false;
+    }
   }
 }
 

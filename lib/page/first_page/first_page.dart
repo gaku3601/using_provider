@@ -44,6 +44,18 @@ class FirstPage extends StatelessWidget {
               },
             ),
             Button(
+              'error',
+              onPressed: () {
+                read.error();
+              },
+            ),
+            Button(
+              'error2',
+              onPressed: () {
+                read.error2();
+              },
+            ),
+            Button(
               '遷移',
               onPressed: () {
                 read.move();

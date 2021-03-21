@@ -31,9 +31,9 @@ class FirstPageController with ChangeNotifier {
   }
 
   Future loading() async {
-    this.locator<LoadingController>().startLoading();
-    await new Future.delayed(new Duration(seconds: 3));
-    this.locator<LoadingController>().endLoading();
+    this.locator<LoadingController>().loading(() async {
+      await new Future.delayed(new Duration(seconds: 3));
+    });
   }
 
   void onSnack() {
@@ -49,14 +49,29 @@ class FirstPageController with ChangeNotifier {
   }
 
   void move() {
-    this.locator<Navigate>().pushReplacement(page: SecondPage());
+    Navigate.pushReplacement(page: SecondPage());
   }
 
   Future fetchUser() async {
-    this.locator<LoadingController>().startLoading();
-    final userName = await this.locator<UserRepository>().fetchName();
-    print(userName);
-    this.locator<LoadingController>().endLoading();
-    this.locator<SnackMessage>().show('ユーザを取得しました！');
+    this.locator<LoadingController>().loading(() async {
+      final userName = await this.locator<UserRepository>().fetchName();
+      print(userName);
+      this.locator<SnackMessage>().show('ユーザを取得しました！');
+    });
+  }
+
+  // dart error
+  Future error() async {
+    this.locator<LoadingController>().loading(() async {
+      // ここで例外が発生した想定
+      final profile = await this.locator<UserRepository>().fetchProfile();
+      print(profile);
+      this.locator<SnackMessage>().show('プロフィールを取得しました！');
+    });
+  }
+
+  // flutter sdk error
+  void error2() {
+    throw Exception('error');
   }
 }
