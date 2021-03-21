@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:using_provider/atom/loading.dart';
+import 'package:using_provider/page/first_page/first_page.dart';
+import 'package:using_provider/repository/repository.dart';
 import 'package:using_provider/util/navigate.dart';
 import 'package:using_provider/util/snack_message.dart';
-import 'package:using_provider/page/first_page/first_page.dart';
 
 void main() {
   runApp(
@@ -17,6 +18,7 @@ void main() {
         Provider<Navigate>(
           create: (_) => Navigate(),
         ),
+        ...Repository.providers(),
       ],
       child: MyApp(),
     ),

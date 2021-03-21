@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:using_provider/atom/loading.dart';
+import 'package:using_provider/page/second_page/second_page.dart';
+import 'package:using_provider/repository/user_repository.dart';
 import 'package:using_provider/util/navigate.dart';
 import 'package:using_provider/util/snack_message.dart';
-import 'package:using_provider/page/second_page/second_page.dart';
 
 class FirstPageController with ChangeNotifier {
   final Locator locator;
@@ -49,5 +50,13 @@ class FirstPageController with ChangeNotifier {
 
   void move() {
     this.locator<Navigate>().pushReplacement(page: SecondPage());
+  }
+
+  Future fetchUser() async {
+    this.locator<LoadingController>().startLoading();
+    final userName = await this.locator<UserRepository>().fetchName();
+    print(userName);
+    this.locator<LoadingController>().endLoading();
+    this.locator<SnackMessage>().show('ユーザを取得しました！');
   }
 }

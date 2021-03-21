@@ -38,6 +38,12 @@ class FirstPage extends StatelessWidget {
               },
             ),
             Button(
+              'repository access',
+              onPressed: () async {
+                await read.fetchUser();
+              },
+            ),
+            Button(
               '遷移',
               onPressed: () {
                 read.move();
