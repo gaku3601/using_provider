@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SnackMessage {
-  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerState =
+  static GlobalKey<ScaffoldMessengerState> scaffoldMessengerState =
       GlobalKey<ScaffoldMessengerState>();
 
-  void show(String text) {
-    this
-        .scaffoldMessengerState
-        .currentState
+  static void show(String text) {
+    scaffoldMessengerState.currentState
         .showSnackBar(SnackBar(content: Text(text)));
   }
 }

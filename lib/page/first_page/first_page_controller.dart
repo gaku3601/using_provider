@@ -37,7 +37,7 @@ class FirstPageController with ChangeNotifier {
   }
 
   void onSnack() {
-    this.locator<SnackMessage>().show('snackbar!!!');
+    SnackMessage.show('snackbar!!!');
   }
 
   void increment() {
@@ -56,7 +56,7 @@ class FirstPageController with ChangeNotifier {
     this.locator<LoadingController>().loading(() async {
       final userName = await this.locator<UserRepository>().fetchName();
       print(userName);
-      this.locator<SnackMessage>().show('ユーザを取得しました！');
+      SnackMessage.show('ユーザを取得しました！');
     });
   }
 
@@ -66,7 +66,7 @@ class FirstPageController with ChangeNotifier {
       // ここで例外が発生した想定
       final profile = await this.locator<UserRepository>().fetchProfile();
       print(profile);
-      this.locator<SnackMessage>().show('プロフィールを取得しました！');
+      SnackMessage.show('プロフィールを取得しました！');
     });
   }
 

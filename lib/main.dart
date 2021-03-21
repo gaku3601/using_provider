@@ -35,9 +35,6 @@ Future run() async {
           providers: [
             ChangeNotifierProvider<LoadingController>(
                 create: (_) => LoadingController()),
-            Provider<SnackMessage>(
-              create: (_) => SnackMessage(),
-            ),
             ...Repository.providers(),
           ],
           child: MyApp(),
@@ -58,7 +55,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: Navigate.key,
-      scaffoldMessengerKey: context.read<SnackMessage>().scaffoldMessengerState,
+      scaffoldMessengerKey: SnackMessage.scaffoldMessengerState,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
