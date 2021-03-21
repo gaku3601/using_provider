@@ -12,12 +12,19 @@ class SecondPage extends StatelessWidget {
       body: (context, read, select) {
         return Column(
           children: [
-            Text('output:'),
-            Text(select((controller) => controller.text)),
+            Text('output1:'),
+            Text(select((controller) => controller.text1)),
+            Text('output2:'),
+            Text(select((controller) => controller.text2)),
             SizedBox(height: 10),
             InputText(
-              controller: read.inputTextController,
-              label: 'input',
+              controller: read.inputTextController1,
+              label: 'input1',
+              placeholder: '入力してね',
+            ),
+            InputText(
+              controller: read.inputTextController2,
+              label: 'input2',
               placeholder: '入力してね',
             ),
             Button(
