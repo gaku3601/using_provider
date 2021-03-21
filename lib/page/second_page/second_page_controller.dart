@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:using_provider/atom/input_text.dart';
+import 'package:using_provider/atom/loading.dart';
 
 class SecondPageController with ChangeNotifier {
   final Locator locator;
@@ -48,5 +49,11 @@ class SecondPageController with ChangeNotifier {
       return;
     }
     print(this._inputTextController.text);
+  }
+
+  Future loading() async {
+    this.locator<LoadingController>().startLoading();
+    await new Future.delayed(new Duration(seconds: 3));
+    this.locator<LoadingController>().endLoading();
   }
 }

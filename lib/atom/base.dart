@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:using_provider/atom/loading.dart';
 
 class Base<T extends ChangeNotifier> extends StatelessWidget {
   final Widget Function(
@@ -13,8 +12,6 @@ class Base<T extends ChangeNotifier> extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<LoadingController>(
-            create: (_) => LoadingController()),
         ChangeNotifierProvider<T>(
             create: (context) => this.notifier(context.read)),
       ],
@@ -32,7 +29,7 @@ class Base<T extends ChangeNotifier> extends StatelessWidget {
           },
           child: Scaffold(
             body: SafeArea(
-              child: Loading(this.body(context, read, select)),
+              child: this.body(context, read, select),
             ),
           ),
         );

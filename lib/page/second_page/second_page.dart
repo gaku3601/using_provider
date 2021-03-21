@@ -34,6 +34,12 @@ class SecondPage extends StatelessWidget {
               },
             ),
             Button(
+              'loading',
+              onPressed: () async {
+                await read.loading();
+              },
+            ),
+            Button(
               '遷移',
               onPressed: () {
                 Navigator.of(context).pushReplacement(
