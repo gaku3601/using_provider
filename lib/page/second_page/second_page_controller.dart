@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:using_provider/atom/base.dart';
 import 'package:using_provider/atom/input_text.dart';
 
-class SecondPageController with ChangeNotifier {
+class SecondPageController extends BaseNotifier {
   // state
   InputTextController _inputTextController;
   String _text = '';

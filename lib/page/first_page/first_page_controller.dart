@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:using_provider/atom/base.dart';
 
-class FirstPageController with ChangeNotifier {
+class FirstPageController extends BaseNotifier {
   int _count = 0;
   int _count2 = 0;
 
@@ -18,6 +18,12 @@ class FirstPageController with ChangeNotifier {
   set __count2(int count) {
     this._count2 = count;
     notifyListeners();
+  }
+
+  Future loading() async {
+    this.loadingController.startLoading();
+    await new Future.delayed(new Duration(seconds: 3));
+    this.loadingController.endLoading();
   }
 
   void increment() {
