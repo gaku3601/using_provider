@@ -12,14 +12,14 @@ class FirstPage extends StatelessWidget {
       body: (context, read, select) {
         return Column(
           children: [
-            select((model) => model.count, (value) => Text(value.toString())),
+            Text(select((controller) => controller.count).toString()),
             Button(
               'count',
               onPressed: () {
                 read.increment();
               },
             ),
-            select((model) => model.count2, (value) => Text(value.toString())),
+            Text(select((controller) => controller.count2).toString()),
             Button(
               'count',
               onPressed: () {

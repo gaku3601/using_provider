@@ -3,10 +3,7 @@ import 'package:provider/provider.dart';
 
 class Base<T extends ChangeNotifier> extends StatelessWidget {
   final Widget Function(
-      BuildContext,
-      T,
-      Selector<T, Object> Function(Object Function(T), Widget Function(Object))
-          select) body;
+      BuildContext, T, dynamic Function(dynamic Function(T)) select) body;
   final ChangeNotifier notifier;
 
   Base({this.body, this.notifier});
@@ -18,12 +15,8 @@ class Base<T extends ChangeNotifier> extends StatelessWidget {
       child: Builder(
         builder: (newContext) {
           final read = newContext.read<T>();
-          final select =
-              (Object property(T model), Widget widget(Object value)) =>
-                  Selector(
-                    selector: (context, T model) => property(model),
-                    builder: (context, value, child) => widget(value),
-                  );
+          final select = (selector(T controller)) =>
+              newContext.select((T controller) => selector(controller));
           return GestureDetector(
             onTap: () {
               // カーソルをはずす処理

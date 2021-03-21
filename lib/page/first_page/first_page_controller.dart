@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
 
 class FirstPageController with ChangeNotifier {
-  int count = 0;
-  int count2 = 0;
+  int _count = 0;
+  int _count2 = 0;
 
-  void increment() {
-    count++;
+  // getter
+  int get count => this._count;
+
+  int get count2 => this._count2;
+
+  // setter
+  set __count(int count) {
+    this._count = count;
     notifyListeners();
   }
 
-  void increment2() {
-    count2++;
+  set __count2(int count) {
+    this._count2 = count;
     notifyListeners();
+  }
+
+  void increment() {
+    this.__count = this._count + 1;
+  }
+
+  void increment2() {
+    this.__count2 = this._count2 + 1;
   }
 }
