@@ -1,7 +1,12 @@
-import 'package:using_provider/atom/base.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:using_provider/atom/input_text.dart';
 
-class SecondPageController extends BaseNotifier {
+class SecondPageController with ChangeNotifier {
+  final Locator locator;
+
+  SecondPageController({@required this.locator});
+
   // state
   InputTextController _inputTextController;
   String _text = '';

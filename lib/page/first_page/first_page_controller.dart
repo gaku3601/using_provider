@@ -1,6 +1,13 @@
-import 'package:using_provider/atom/base.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:using_provider/atom/loading.dart';
+import 'package:using_provider/atom/snack_bar.dart';
 
-class FirstPageController extends BaseNotifier {
+class FirstPageController with ChangeNotifier {
+  final Locator locator;
+
+  FirstPageController({@required this.locator});
+
   int _count = 0;
   int _count2 = 0;
 
@@ -21,9 +28,13 @@ class FirstPageController extends BaseNotifier {
   }
 
   Future loading() async {
-    this.loadingController.startLoading();
+    this.locator<LoadingController>().startLoading();
     await new Future.delayed(new Duration(seconds: 3));
-    this.loadingController.endLoading();
+    this.locator<LoadingController>().endLoading();
+  }
+
+  void onSnack() {
+    this.locator<SnackBarController>().onSnackbar('snackbar!!!');
   }
 
   void increment() {

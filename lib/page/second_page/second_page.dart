@@ -9,7 +9,7 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Base<SecondPageController>(
-      notifier: SecondPageController()..init(),
+      notifier: (locator) => SecondPageController(locator: locator)..init(),
       body: (context, read, select) {
         return Column(
           children: [

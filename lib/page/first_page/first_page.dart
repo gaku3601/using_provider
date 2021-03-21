@@ -8,7 +8,7 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Base<FirstPageController>(
-      notifier: FirstPageController(),
+      notifier: (locator) => FirstPageController(locator: locator),
       body: (context, read, select) {
         return Column(
           children: [
@@ -30,6 +30,12 @@ class FirstPage extends StatelessWidget {
               'loading',
               onPressed: () async {
                 await read.loading();
+              },
+            ),
+            Button(
+              'snackbar',
+              onPressed: () {
+                read.onSnack();
               },
             ),
             Button(
