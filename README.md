@@ -1,16 +1,20 @@
 # using_provider
 
-A new Flutter project.
+ChangeNotifierとProviderを利用したflutterアプリのアーキテクチャ勉強用リポジトリ
 
-## Getting Started
+## このリポジトリで何ができるの？
 
-This project is a starting point for a Flutter application.
+```
+・ChangeNotifierとProviderを利用した状態管理
+・共通コンポーネントでの状態管理(atom/InputText)
+・SnackBarの利用方法(util/snack_message)
+・Navigatorの利用方法(util/navigate)
+・ripositoryをProviderで管理する方法(repository)
+・例外発生時の補足(main.dart)
+・ローディングの利用方法(atom/loading.dart)
+```
 
-A few resources to get you started if this is your first Flutter project:
+## 今後やるかどうか迷ってる点
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+状態へのアクセス方法が利便性重視でcontext.read, context.selectを利用している。  
+SelectorやConsumerを利用した方が、リビルド時の範囲を制限できるので、パフォーマンスが悪そうならその方法に置き換える。
