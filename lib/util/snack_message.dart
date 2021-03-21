@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class SnackBarController with ChangeNotifier {
+class SnackMessage {
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerState =
       GlobalKey<ScaffoldMessengerState>();
 
-  void onSnackbar(String text) {
+  void show(String text) {
     this
         .scaffoldMessengerState
         .currentState

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:using_provider/atom/loading.dart';
-import 'package:using_provider/atom/snack_bar.dart';
+import 'package:using_provider/util/navigate.dart';
+import 'package:using_provider/util/snack_message.dart';
+import 'package:using_provider/page/second_page/second_page.dart';
 
 class FirstPageController with ChangeNotifier {
   final Locator locator;
@@ -34,7 +36,7 @@ class FirstPageController with ChangeNotifier {
   }
 
   void onSnack() {
-    this.locator<SnackBarController>().onSnackbar('snackbar!!!');
+    this.locator<SnackMessage>().show('snackbar!!!');
   }
 
   void increment() {
@@ -43,5 +45,9 @@ class FirstPageController with ChangeNotifier {
 
   void increment2() {
     this.__count2 = this._count2 + 1;
+  }
+
+  void move() {
+    this.locator<Navigate>().pushReplacement(page: SecondPage());
   }
 }

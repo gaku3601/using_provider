@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:using_provider/atom/input_text.dart';
 import 'package:using_provider/atom/loading.dart';
+import 'package:using_provider/util/navigate.dart';
+import 'package:using_provider/page/first_page/first_page.dart';
 
 class SecondPageController with ChangeNotifier {
   final Locator locator;
@@ -55,5 +57,9 @@ class SecondPageController with ChangeNotifier {
     this.locator<LoadingController>().startLoading();
     await new Future.delayed(new Duration(seconds: 3));
     this.locator<LoadingController>().endLoading();
+  }
+
+  void move() {
+    this.locator<Navigate>().pushReplacement(page: FirstPage());
   }
 }
